@@ -1,0 +1,27 @@
+
+body{
+    background-color: azure;
+    background-size: cover;
+    background-attachment: fixed;
+
+}
+.fondo-cd{
+
+    background-image: url(fondoooo.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+
+}
+
+.fondo-vinil{
+    background-image: url(vinilllllll.jpeg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+.fondo-cas{
+
+    background-image: url(casssssss.jpeg);
+    background-size: cover;
+    background-attachment: fixed;
+    
+}

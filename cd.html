@@ -1,17 +1,225 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discos CD</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="favicon (2).ico">
-</head>
-<body class="fondo-cd"></body>
-    <a href="vinil.html">vinil</a>
-    <a href="cassets.html">cassets</a>
-    <a href="index.html">inicio</a>
+    <title>Discos CD · Ecos del Sentir</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            background-color: #0a0d12;
+            background-image: url(fondoooo.jpg);
+            background-size: cover;
+            background-attachment: fixed;
+            color: #f0e6d3;
+        }
 
-    
+        /* NAV */
+        nav {
+            padding: 24px 40px;
+            border-bottom: 1px solid rgba(91, 155, 213, 0.2);
+            background-color: rgba(10, 13, 18, 0.7);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #a8d0f5;
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-right: 16px;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        nav span {
+            color: rgba(240, 230, 211, 0.3);
+            margin-right: 16px;
+        }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            padding: 60px 20px 50px;
+            background-color: rgba(10, 13, 18, 0.6);
+        }
+
+        .formato-tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            color: #a8d0f5;
+            border: 1px solid rgba(91, 155, 213, 0.4);
+            padding: 5px 16px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: #f0e6d3;
+            margin: 0 0 14px 0;
+        }
+
+        h1 em {
+            font-style: italic;
+            color: #a8d0f5;
+        }
+
+        .descripcion {
+            font-size: 1rem;
+            font-weight: 300;
+            color: #d4c9b8;
+            letter-spacing: 0.08em;
+        }
+
+        .linea {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #5b9bd5, transparent);
+            margin: 24px auto 0;
+        }
+
+        /* SECCIÓN */
+        .etiqueta-seccion {
+            text-align: center;
+            font-size: 0.65rem;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            color: #5b9bd5;
+            padding: 32px 0 20px;
+        }
+
+        /* TARJETAS */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        .tarjeta {
+            background-color: rgba(15, 19, 24, 0.85);
+            border: 1px solid rgba(91, 155, 213, 0.15);
+            padding: 36px 32px;
+        }
+
+        .tarjeta:hover {
+            background-color: rgba(20, 25, 33, 0.95);
+            border-color: rgba(91, 155, 213, 0.35);
+        }
+
+        .numero {
+            font-size: 0.6rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: #5b9bd5;
+            margin-bottom: 10px;
+        }
+
+        .nombre {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: #f0e6d3;
+            margin: 0 0 14px 0;
+        }
+
+        .linea-corta {
+            width: 40px;
+            height: 1px;
+            background-color: rgba(91, 155, 213, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .cita {
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.75;
+            color: #d4c9b8;
+            font-style: italic;
+        }
+
+        .cita::before {
+            content: '"';
+            color: #5b9bd5;
+            font-size: 1.3rem;
+        }
+
+        .cita::after {
+            content: '"';
+            color: #5b9bd5;
+            font-size: 1.3rem;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 28px 20px;
+            border-top: 1px solid rgba(91, 155, 213, 0.08);
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            color: #a8d0f5;
+            text-transform: uppercase;
+            background-color: rgba(10, 13, 18, 0.7);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">← Inicio</a>
+        <span>·</span>
+        <a href="vinil.html">Vinil</a>
+        <span>·</span>
+        <a href="cassets.html">Cassette</a>
+    </nav>
+
+    <header>
+        <div class="formato-tag">Formato · Disco CD</div>
+        <h1>Voces del <em>Disco</em></h1>
+        <p class="descripcion">Personas que encontraron en el CD un espacio para escuchar diferente.</p>
+        <div class="linea"></div>
+    </header>
+
+    <p class="etiqueta-seccion">— Entrevistas —</p>
+
+    <div class="grid">
+
+        <div class="tarjeta">
+            <p class="numero">Entrevista · 01</p>
+            <h2 class="nombre">Persona 1</h2>
+            <div class="linea-corta"></div>
+            <p class="cita">La música en CD me devuelve algo que creí olvidado. Cada canción suena con una claridad que me recuerda que sentir es también una forma de recordar.</p>
+        </div>
+
+        <div class="tarjeta">
+            <p class="numero">Entrevista · 02</p>
+            <h2 class="nombre">Persona 2</h2>
+            <div class="linea-corta"></div>
+            <p class="cita">Cuando escucho música en disco, siento que el tiempo se detiene. Es como si cada nota me conectara con una versión de mí que aún no conocía.</p>
+        </div>
+
+        <div class="tarjeta">
+            <p class="numero">Entrevista · 03</p>
+            <h2 class="nombre">Persona 3</h2>
+            <div class="linea-corta"></div>
+            <p class="cita">Para mí, la música no es solo sonido. Es un idioma que mi cuerpo entiende antes que mi mente. El CD tiene algo especial, algo físico y real.</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <span>Ecos del Sentir &nbsp;·&nbsp; Archivo Sonoro &nbsp;·&nbsp; Disco CD</span>
+    </footer>
+
 </body>
 </html>

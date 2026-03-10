@@ -1,14 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cassets</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Cassette · Ecos del Sentir</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            background-color: #0a0d12;
+            background-image: url(casssssss.jpeg);
+            background-size: cover;
+            background-attachment: fixed;
+            color: #f0e6d3;
+            min-height: 100vh;
+        }
+
+        /* NAV */
+        nav {
+            padding: 24px 40px;
+            border-bottom: 1px solid rgba(91, 155, 213, 0.2);
+            background-color: rgba(10, 13, 18, 0.7);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #a8d0f5;
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-right: 16px;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        nav span {
+            color: rgba(240, 230, 211, 0.3);
+            margin-right: 16px;
+        }
+
+        /* HEADER centrado en pantalla */
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 73px);
+            text-align: center;
+            padding: 40px 20px;
+            background-color: rgba(10, 13, 18, 0.45);
+        }
+
+        .formato-tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            color: #a8d0f5;
+            border: 1px solid rgba(91, 155, 213, 0.4);
+            padding: 5px 16px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: #f0e6d3;
+            margin: 0 0 14px 0;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.8);
+        }
+
+        h1 em {
+            font-style: italic;
+            color: #a8d0f5;
+        }
+
+        .descripcion {
+            font-size: 1rem;
+            font-weight: 300;
+            color: #d4c9b8;
+            letter-spacing: 0.08em;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.9);
+        }
+
+        .linea {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #5b9bd5, transparent);
+            margin: 24px auto 0;
+        }
+    </style>
 </head>
-<body class="fondo-cas">
-    <a href="vinil.html">vinil</a>
-    <a href="cd.html">CD</a>
-    <a href="index.html">inicio</a>
+<body>
+
+    <nav>
+        <a href="index.html">← Inicio</a>
+        <span>·</span>
+        <a href="vinil.html">Vinilo</a>
+        <span>·</span>
+        <a href="cd.html">CD</a>
+    </nav>
+
+    <header>
+        <div class="formato-tag">Formato · Cassette</div>
+        <h1>Voces de la <em>Cinta</em></h1>
+        <p class="descripcion">Personas que encontraron en el cassette la calidez de lo imperfecto.</p>
+        <div class="linea"></div>
+    </header>
+
 </body>
 </html>

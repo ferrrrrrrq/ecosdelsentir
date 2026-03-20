@@ -1,4 +1,4 @@
- body {
+body {
             background-color: #0e0b07;
             color: #f0e6d3;
             font-family: 'Cormorant Garamond', serif;
@@ -9,23 +9,138 @@
             justify-content: center;
             margin: 0;
         }
-.fondo-cd{
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 8px;
+        }
 
-    background-image: url(fondoooo.jpg);
-    background-size: cover;
-    background-attachment: fixed;
+        h1 em {
+            font-style: italic;
+            color: #c9a84c;
+        }
 
-}
+        .subtitulo {
+            font-size: 0.85rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(240,230,211,0.4);
+            margin-bottom: 48px;
+            text-align: center;
+        }
 
-.fondo-vinil{
-    background-image: url(vinilllllll.jpeg);
-    background-size: cover;
-    background-attachment: fixed;
-}
-.fondo-cas{
+        .linea {
+            width: 60px;
+            height: 1px;
+            background: #c9a84c;
+            margin: 0 auto 48px;
+            opacity: 0.5;
+        }
 
-    background-image: url(casssssss.jpeg);
-    background-size: cover;
-    background-attachment: fixed;
-    
-}
+        nav {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #f0e6d3;
+            border: 1px solid rgba(201,168,76,0.3);
+            padding: 14px 32px;
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        nav a:hover {
+            background: rgba(201,168,76,0.08);
+            border-color: #c9a84c;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 24px;
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(240,230,211,0.2);
+        }
+
+        /* ── Escena ── */
+        .burbujas {
+            position: relative;
+            width: min(700px, 92vw);
+            height: min(560px, 80vh);
+            margin: 0 auto;
+        }
+
+        /* Título centrado dentro de la escena */
+        .titulo-escena {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* ── Burbujas ── */
+        .burbuja {
+            position: absolute;
+            border-radius: 50%;
+            border: 1.5px solid #b8964e;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            cursor: pointer;
+            opacity: 0;
+            animation: burbuja-entra 0.7s ease forwards, flotar 5s ease-in-out infinite;
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .burbuja span {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(0.7rem, 1.6vw, 0.9rem);
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #b8964e;
+            text-align: center;
+            padding: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .burbuja:hover {
+            background: rgba(184, 150, 78, 0.08);
+            border-color: #d4b06a;
+        }
+        .burbuja:hover span { color: #d4b06a; }
+
+        /* Posiciones — distribuidas alrededor del centro */
+        .b1 { width: 110px; height: 110px; top: 0%;    left: 28%;   animation-delay: 0s,   0.1s; --fx:  3px; --fy: -6px; }
+        .b2 { width: 122px; height: 122px; top: 2%;    right: 4%;   animation-delay: 0.5s, 0.2s; --fx: -4px; --fy: -5px; }
+        .b3 { width: 112px; height: 112px; top: 18%;   left: 0%;    animation-delay: 1s,   0.3s; --fx:  5px; --fy: -4px; }
+        .b4 { width: 100px; height: 100px; top: 48%;   left: 3%;    animation-delay: 0.3s, 0.4s; --fx:  4px; --fy: -5px; }
+        .b5 { width: 104px; height: 104px; top: 34%;   right: 3%;   animation-delay: 0.8s, 0.5s; --fx: -4px; --fy: -6px; }
+        .b6 { width: 118px; height: 118px; top: 56%;   right: 1%;   animation-delay: 1.3s, 0.6s; --fx: -5px; --fy: -4px; }
+        .b7 { width: 120px; height: 120px; bottom: 1%; left: 2%;    animation-delay: 0.4s, 0.7s; --fx:  4px; --fy: -5px; }
+        .b8 { width:  96px; height:  96px; bottom: 6%; right: 20%;  animation-delay: 0.9s, 0.8s; --fx: -3px; --fy: -6px; }
+        .b9 { width:  86px; height:  86px; bottom: 0%; left: 38%;   animation-delay: 0.6s, 0.9s; --fx:  2px; --fy: -7px; }
+
+        @keyframes flotar {
+            0%, 100% { transform: translate(0, 0); }
+            50%       { transform: translate(var(--fx, 2px), var(--fy, -5px)); }
+        }
+
+        @keyframes burbuja-entra {
+            from { opacity: 0; transform: scale(0.5); }
+            to   { opacity: 1; transform: scale(1); }
+        }

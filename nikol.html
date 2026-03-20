@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikol — Ecos del Sentir</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Personas.css">
+</head>
+<body>
+
+    <a href="../index.html" class="back-btn">Volver al inicio</a>
+
+    <main>
+
+        <!-- NAME TAG -->
+        <div class="name-tag">
+            <span class="name-tag-bracket"></span>
+            <h1 class="name-tag-label">Nikol</h1>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- AUDIO BLOCK -->
+        <div class="audio-block">
+            <p class="audio-label">Entrevista — voz</p>
+            <div class="audio-wrapper">
+                <svg class="mic-icon" viewBox="0 0 24 24">
+                    <rect x="9" y="2" width="6" height="11" rx="3"/>
+                    <path d="M5 10a7 7 0 0 0 14 0"/>
+                    <line x1="12" y1="19" x2="12" y2="22"/>
+                    <line x1="8" y1="22" x2="16" y2="22"/>
+                </svg>
+                <!-- 
+                    Reemplaza "fernando.ogg" con la ruta real de tu archivo.
+                    Si no hay archivo aún, se muestra el mensaje de placeholder.
+                -->
+                <div class="audio-player" id="audioContainer">
+                    <div class="waveform" id="waveform">
+                        <span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                    <p class="no-audio-msg" id="noAudioMsg" style="display:none;">
+                        Archivo de audio no disponible aún
+                    </p>
+                    <audio id="audioEl" controls style="display:none;">
+                        <source src="assets/Nikol.ogg" type="audio/ogg">
+                    </audio>
+                </div>
+            </div>
+        </div>
+
+        <!-- HISTORIA BLOCK -->
+        <div class="historia-block">
+            <div class="historia-tag">
+                <span class="historia-tag-hash">#</span>
+                <span class="historia-tag-text">Historia</span>
+            </div>
+            <div class="historia-grid">
+                <div class="historia-item">
+                    <p class="historia-key">Nombre</p>
+                    <p class="historia-val">Nikol</p>
+                </div>
+                <div class="historia-item">
+                    <p class="historia-key">Ocupación</p>
+                    <p class="historia-val">— — —</p>
+                </div>
+                <div class="historia-item">
+                    <p class="historia-key">Edad</p>
+                    <p class="historia-val">— — —</p>
+                </div>
+                <div class="historia-item">
+                    <p class="historia-key">Ciudad</p>
+                    <p class="historia-val">— — —</p>
+                </div>
+                <div class="historia-item historia-frase">
+                    <p class="historia-key">La música ha marcado mi vida porque…</p>
+                    <p class="historia-val">
+                        — — —
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CANCIÓN FAVORITA -->
+        <div class="cancion-block">
+            <p class="cancion-label">Canción favorita</p>
+            <!-- Cambia href="#" por el link real de la canción -->
+            <a href="https://youtu.be/TQT3a1qCUuM?si=epTRvA-ccWHnn8m8" class="cancion-link" target="_blank" rel="noopener">
+                <div class="play-icon">
+                    <div class="play-triangle"></div>
+                </div>
+                <div class="cancion-info">
+                    <p class="cancion-title">— Canyon Moon - Harry Styles —</p>
+                    <p class="cancion-sub">Escuchar Ahora ↗</p>
+                </div>
+                <span class="ext-arrow">↗</span>
+            </a>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="page-footer">
+            <span class="page-footer-text">Ecos del Sentir</span>
+            <span class="page-footer-text">Archivo Sonoro</span>
+        </div>
+
+    </main>
+
+    <script>
+        // Check if audio file loads; show waveform + player or fallback message
+        const audioEl = document.getElementById('audioEl');
+        const waveform = document.getElementById('waveform');
+        const noAudioMsg = document.getElementById('noAudioMsg');
+
+        audioEl.addEventListener('canplay', () => {
+            waveform.style.display = 'none';
+            audioEl.style.display = 'block';
+        });
+
+        audioEl.addEventListener('error', () => {
+            waveform.style.display = 'none';
+            noAudioMsg.style.display = 'block';
+        });
+
+        // Trigger load check
+        if (audioEl.readyState >= 3) {
+            waveform.style.display = 'none';
+            audioEl.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

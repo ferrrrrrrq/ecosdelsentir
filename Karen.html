@@ -10,22 +10,22 @@
 <body>
 
     <a href="../index.html" class="back-btn">Volver al inicio</a>
+
     <nav class="side-nav">
-    <a href="sofi.html">Sofía</a>
-    <a href="Zaid.html">Zaid</a>
-    <a href="Rosa.html">Rosa</a>
-    <a href="Yess.html">Yess</a>
-    <a href="ari.html">Genesis</a>
-    <a href="Allen.html">Allen</a>
-    <a href="nikol.html">Nikol</a>
-    <a href="Pau.html">Pau</a>
-    <div class="nav-sep"></div>
-    <a href="../index.html">Inicio</a>
-</nav>
+        <a href="sofi.html">Sofía</a>
+        <a href="Zaid.html">Zaid</a>
+        <a href="Rosa.html">Rosa</a>
+        <a href="Yess.html">Yess</a>
+        <a href="ari.html">Genesis</a>
+        <a href="Allen.html">Allen</a>
+        <a href="nikol.html">Nikol</a>
+        <a href="Pau.html">Pau</a>
+        <div class="nav-sep"></div>
+        <a href="../index.html">Inicio</a>
+    </nav>
 
     <main>
 
-        <!-- NAME TAG -->
         <div class="name-tag">
             <span class="name-tag-bracket"></span>
             <h1 class="name-tag-label">Karol</h1>
@@ -33,7 +33,6 @@
 
         <div class="divider"></div>
 
-        <!-- AUDIO BLOCK -->
         <div class="audio-block">
             <p class="audio-label">Entrevista — voz</p>
             <div class="audio-wrapper">
@@ -43,10 +42,6 @@
                     <line x1="12" y1="19" x2="12" y2="22"/>
                     <line x1="8" y1="22" x2="16" y2="22"/>
                 </svg>
-                <!-- 
-                    Reemplaza "fernando.ogg" con la ruta real de tu archivo.
-                    Si no hay archivo aún, se muestra el mensaje de placeholder.
-                -->
                 <div class="audio-player" id="audioContainer">
                     <div class="waveform" id="waveform">
                         <span></span><span></span><span></span><span></span><span></span>
@@ -62,7 +57,6 @@
             </div>
         </div>
 
-        <!-- HISTORIA BLOCK -->
         <div class="historia-block">
             <div class="historia-tag">
                 <span class="historia-tag-hash">#</span>
@@ -73,7 +67,7 @@
                     <p class="historia-key">Nombre</p>
                     <p class="historia-val">Karol Rodríguez</p>
                 </div>
-                <div class="historia-item">
+                <div class="historia-item derecha">
                     <p class="historia-key">Ocupación</p>
                     <p class="historia-val">Estudiante de la Licenciatura en Gastronomía y Turismo</p>
                 </div>
@@ -81,11 +75,11 @@
                     <p class="historia-key">Edad</p>
                     <p class="historia-val">18</p>
                 </div>
-                <div class="historia-item">
+                <div class="historia-item derecha">
                     <p class="historia-key">País</p>
                     <p class="historia-val">México</p>
                 </div>
-                <div class="historia-item historia-frase">
+                <div class="historia-item historia-frase ultima-fila">
                     <p class="historia-key">La música ha marcado mi vida porque…</p>
                     <p class="historia-val">
                         Para mí la música es muy importante, porque la considero como una forma de expresar el como nos sentimos día a día, hace que cada dia al escuchar mi música favorita me sienta más feliz, con más energía, también es importante porque es algo que forma parte de nuestra vida.
@@ -94,23 +88,20 @@
             </div>
         </div>
 
-        <!-- CANCIÓN FAVORITA -->
         <div class="cancion-block">
             <p class="cancion-label">Canción favorita</p>
-            <!-- Cambia href="#" por el link real de la canción -->
             <a href="https://youtu.be/DG6DtnDnQu4?si=LjjYMIXJS-IGcQG-" class="cancion-link" target="_blank" rel="noopener">
                 <div class="play-icon">
                     <div class="play-triangle"></div>
                 </div>
                 <div class="cancion-info">
                     <p class="cancion-title">— Outro:wings - BTS —</p>
-                    <p class="cancion-sub">Escuchar en Ahora ↗</p>
+                    <p class="cancion-sub">Escuchar ahora ↗</p>
                 </div>
                 <span class="ext-arrow">↗</span>
             </a>
         </div>
 
-        <!-- FOOTER -->
         <div class="page-footer">
             <span class="page-footer-text">Ecos del Sentir</span>
             <span class="page-footer-text">Archivo Sonoro</span>
@@ -119,25 +110,21 @@
     </main>
 
     <script>
-        // Check if audio file loads; show waveform + player or fallback message
-        const audioEl = document.getElementById('audioEl');
-        const waveform = document.getElementById('waveform');
+        const audioEl    = document.getElementById('audioEl');
+        const waveform   = document.getElementById('waveform');
         const noAudioMsg = document.getElementById('noAudioMsg');
 
-        audioEl.addEventListener('canplay', () => {
+        audioEl.addEventListener('canplay', function() {
             waveform.style.display = 'none';
-            audioEl.style.display = 'block';
+            audioEl.style.display  = 'block';
         });
-
-        audioEl.addEventListener('error', () => {
-            waveform.style.display = 'none';
+        audioEl.addEventListener('error', function() {
+            waveform.style.display   = 'none';
             noAudioMsg.style.display = 'block';
         });
-
-        // Trigger load check
         if (audioEl.readyState >= 3) {
             waveform.style.display = 'none';
-            audioEl.style.display = 'block';
+            audioEl.style.display  = 'block';
         }
     </script>
 

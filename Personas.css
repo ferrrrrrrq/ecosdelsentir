@@ -1,400 +1,559 @@
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ===========================
+   RESET BÁSICO
+   Quitamos márgenes y rellenos
+   que los navegadores ponen
+   por defecto
+   =========================== */
 
-        :root {
-            --bg: #0d0c0b;
-            --bg2: #131210;
-            --gold: #c9a84c;
-            --gold-dim: #9a7a38;
-            --gold-faint: rgba(201,168,76,0.12);
-            --gold-border: rgba(201,168,76,0.35);
-            --text: #e8e0d0;
-            --text-muted: #7a7060;
-            --text-dim: #4a4540;
-            --accent-orange: #d4602a;
-            --accent-green: #4a7c52;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        html, body {
-            min-height: 100vh;
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Montserrat', sans-serif;
-        }
 
-        /* Grain overlay */
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-            opacity: 0.4;
-            pointer-events: none;
-            z-index: 0;
-        }
+/* ===========================
+   ESTILO GENERAL
+   =========================== */
 
-        /* ── BACK BUTTON ── */
-        .back-btn {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-            color: var(--text-muted);
-            font-size: 0.65rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-        .back-btn::before {
-            content: '←';
-            font-size: 0.9rem;
-            transition: transform 0.3s;
-        }
-        .back-btn:hover { color: var(--gold); }
-        .back-btn:hover::before { transform: translateX(-4px); }
+html, body {
+    min-height: 100vh;
+    background-color: #0d0c0b;
+    color: #e8e0d0;
+    font-family: 'Montserrat', sans-serif;
+}
 
-        /* ── MAIN LAYOUT ── */
-        main {
-            position: relative;
-            z-index: 1;
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 7rem 2rem 5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
 
-        /* ── NAME TAG ── */
-        .name-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 2.5rem;
-            opacity: 0;
-            animation: fadeUp 0.7s 0.1s forwards;
-        }
-        .name-tag-label {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.8rem;
-            font-weight: 300;
-            letter-spacing: 0.04em;
-            color: var(--text);
-        }
-        .name-tag-bracket {
-            display: block;
-            width: 3px;
-            height: 2.8rem;
-            background: var(--accent-orange);
-            border-radius: 2px;
-        }
+/* ===========================
+   BOTÓN DE REGRESO (esquina superior izquierda)
+   =========================== */
 
-        /* ── DIVIDER ── */
-        .divider {
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, var(--gold-border) 0%, transparent 100%);
-            margin-bottom: 2.5rem;
-            opacity: 0;
-            animation: fadeIn 0.6s 0.3s forwards;
-        }
+.back-btn {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    z-index: 100;
 
-        /* ── AUDIO BLOCK ── */
-        .audio-block {
-            margin-bottom: 3rem;
-            opacity: 0;
-            animation: fadeUp 0.7s 0.4s forwards;
-        }
-        .audio-label {
-            font-size: 0.6rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 0.75rem;
-        }
-        .audio-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            border: 1px solid var(--gold-border);
-            background: var(--gold-faint);
-            padding: 0.9rem 1.2rem;
-            border-radius: 2px;
-        }
-        .mic-icon {
-            width: 32px;
-            height: 32px;
-            fill: none;
-            stroke: var(--gold);
-            stroke-width: 1.5;
-            flex-shrink: 0;
-        }
-        .audio-note {
-            font-size: 0.65rem;
-            letter-spacing: 0.1em;
-            color: var(--text-muted);
-            font-style: italic;
-        }
-        /* Custom audio player */
-        .audio-player {
-            flex: 1;
-        }
-        audio {
-            width: 100%;
-            height: 32px;
-            accent-color: var(--gold);
-            filter: invert(0);
-        }
-        audio::-webkit-media-controls-panel {
-            background: transparent;
-        }
-        /* Waveform visual (decorative) */
-        .waveform {
-            display: flex;
-            align-items: center;
-            gap: 3px;
-            height: 28px;
-            flex: 1;
-        }
-        .waveform span {
-            display: block;
-            width: 3px;
-            background: var(--gold);
-            border-radius: 2px;
-            opacity: 0.6;
-            animation: wave 1.2s ease-in-out infinite;
-        }
-        .waveform span:nth-child(1)  { height: 8px;  animation-delay: 0s; }
-        .waveform span:nth-child(2)  { height: 16px; animation-delay: 0.1s; }
-        .waveform span:nth-child(3)  { height: 22px; animation-delay: 0.2s; }
-        .waveform span:nth-child(4)  { height: 12px; animation-delay: 0.15s; }
-        .waveform span:nth-child(5)  { height: 26px; animation-delay: 0.05s; }
-        .waveform span:nth-child(6)  { height: 18px; animation-delay: 0.25s; }
-        .waveform span:nth-child(7)  { height: 10px; animation-delay: 0.3s; }
-        .waveform span:nth-child(8)  { height: 20px; animation-delay: 0.1s; }
-        .waveform span:nth-child(9)  { height: 14px; animation-delay: 0.2s; }
-        .waveform span:nth-child(10) { height: 8px;  animation-delay: 0.05s; }
-        @keyframes wave {
-            0%, 100% { transform: scaleY(1); opacity: 0.5; }
-            50%       { transform: scaleY(0.5); opacity: 1; }
-        }
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 
-        /* No audio file placeholder */
-        .no-audio-msg {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            letter-spacing: 0.1em;
-            font-style: italic;
-            flex: 1;
-        }
+    text-decoration: none;
+    color: #7a7060;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
 
-        /* ── HISTORIA BLOCK ── */
-        .historia-block {
-            margin-bottom: 3rem;
-            opacity: 0;
-            animation: fadeUp 0.7s 0.55s forwards;
-        }
-        .historia-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        .historia-tag-hash {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            color: var(--gold);
-            font-style: italic;
-        }
-        .historia-tag-text {
-            font-size: 0.65rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--gold);
-            border-bottom: 1px solid var(--gold-border);
-            padding-bottom: 2px;
-        }
-        .historia-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            border: 1px solid rgba(255,255,255,0.06);
-        }
-        .historia-item {
-            padding: 1.1rem 1.3rem;
-            border-right: 1px solid rgba(255,255,255,0.06);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-        .historia-item:nth-child(even) { border-right: none; }
-        .historia-item:nth-last-child(-n+2) { border-bottom: none; }
-        .historia-key {
-            font-size: 0.55rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--text-dim);
-            margin-bottom: 0.35rem;
-        }
-        .historia-val {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: var(--text);
-            letter-spacing: 0.03em;
-        }
-        .historia-frase {
-            grid-column: 1 / -1;
-            padding: 1.3rem;
-            border-bottom: none;
-        }
-        .historia-frase .historia-val {
-            font-size: 1rem;
-            font-style: italic;
-            color: #b0a898;
-            line-height: 1.6;
-        }
+/* La flecha ← antes del texto */
+.back-btn::before {
+    content: '←';
+    font-size: 0.9rem;
+    transition: transform 0.3s;
+}
 
-        /* ── CANCION BLOCK ── */
-        .cancion-block {
-            margin-bottom: 3rem;
-            opacity: 0;
-            animation: fadeUp 0.7s 0.7s forwards;
-        }
-        .cancion-label {
-            font-size: 0.6rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .cancion-label::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: rgba(255,255,255,0.06);
-        }
-        .cancion-link {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-            border: 1px solid var(--gold-border);
-            padding: 1rem 1.3rem;
-            background: var(--gold-faint);
-            transition: background 0.3s, border-color 0.3s;
-            border-radius: 2px;
-        }
-        .cancion-link:hover {
-            background: rgba(201,168,76,0.2);
-            border-color: var(--gold);
-        }
-        .play-icon {
-            width: 36px;
-            height: 36px;
-            border: 1px solid var(--gold-border);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            transition: border-color 0.3s;
-        }
-        .cancion-link:hover .play-icon { border-color: var(--gold); }
-        .play-triangle {
-            width: 0;
-            height: 0;
-            border-top: 6px solid transparent;
-            border-bottom: 6px solid transparent;
-            border-left: 10px solid var(--gold);
-            margin-left: 2px;
-        }
-        .cancion-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            color: var(--text);
-            letter-spacing: 0.04em;
-        }
-        .cancion-sub {
-            font-size: 0.6rem;
-            letter-spacing: 0.15em;
-            color: var(--text-muted);
-            margin-top: 0.2rem;
-            text-transform: uppercase;
-        }
-        .ext-arrow {
-            margin-left: auto;
-            font-size: 1rem;
-            color: var(--gold-dim);
-            transition: transform 0.3s;
-        }
-        .cancion-link:hover .ext-arrow { transform: translate(3px, -3px); }
+.back-btn:hover {
+    color: #c9a84c;
+}
 
-        /* ── FOOTER LINE ── */
-        .page-footer {
-            margin-top: 1rem;
-            opacity: 0;
-            animation: fadeIn 0.6s 0.9s forwards;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .page-footer-text {
-            font-size: 0.55rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--text-dim);
-        }
+.back-btn:hover::before {
+    transform: translateX(-4px);
+}
 
-        /* ── ANIMATIONS ── */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(18px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to   { opacity: 1; }
-        }
 
-        /* ── RESPONSIVE ── */
-        @media (max-width: 520px) {
-            main { padding: 5rem 1.2rem 4rem; }
-            .historia-grid { grid-template-columns: 1fr; }
-            .historia-item:nth-child(even) { border-right: 1px solid rgba(255,255,255,0.06); }
-            .historia-frase { grid-column: 1; }
-            .back-btn { top: 1.2rem; left: 1.2rem; }
-        }
+/* ===========================
+   NAVEGACIÓN LATERAL DERECHA
+   =========================== */
 
-        /* ── NAV LATERAL SIMPLE ── */
 .side-nav {
     position: fixed;
     top: 50%;
     right: 28px;
     transform: translateY(-50%);
     z-index: 100;
+
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
+
 .side-nav a {
     font-family: 'Montserrat', sans-serif;
     font-size: 10px;
     font-weight: 300;
     letter-spacing: 0.15em;
     text-decoration: none;
-    color: rgba(255,255,255,0.3);
+    color: rgba(255, 255, 255, 0.3);
     text-transform: uppercase;
     transition: color 0.2s;
 }
-.side-nav a:hover { color: rgba(255,255,255,0.85); }
-.side-nav a.current { color: rgba(255,255,255,0.85); }
-.side-nav .nav-sep {
+
+.side-nav a:hover {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Enlace de la página actual */
+.side-nav a.current {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Línea separadora en el nav */
+.nav-sep {
     width: 100%;
     height: 1px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     margin: 4px 0;
+}
+
+
+/* ===========================
+   CONTENEDOR PRINCIPAL
+   =========================== */
+
+main {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 7rem 2rem 5rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+
+/* ===========================
+   NOMBRE DE LA PERSONA
+   =========================== */
+
+.name-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+
+    /* Animación de entrada */
+    opacity: 0;
+    animation: fadeUp 0.7s 0.1s forwards;
+}
+
+/* El nombre en grande */
+.name-tag-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: #e8e0d0;
+}
+
+/* La barra naranja a la izquierda del nombre */
+.name-tag-bracket {
+    display: block;
+    width: 3px;
+    height: 2.8rem;
+    background-color: #d4602a;
+    border-radius: 2px;
+}
+
+
+/* ===========================
+   LÍNEA DIVISORA
+   =========================== */
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(201, 168, 76, 0.35) 0%, transparent 100%);
+    margin-bottom: 2.5rem;
+
+    opacity: 0;
+    animation: fadeIn 0.6s 0.3s forwards;
+}
+
+
+/* ===========================
+   BLOQUE DE AUDIO
+   =========================== */
+
+.audio-block {
+    margin-bottom: 3rem;
+
+    opacity: 0;
+    animation: fadeUp 0.7s 0.4s forwards;
+}
+
+/* Etiqueta pequeña encima del audio */
+.audio-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #7a7060;
+    margin-bottom: 0.75rem;
+}
+
+/* Caja que contiene el ícono y el audio */
+.audio-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid rgba(201, 168, 76, 0.35);
+    background-color: rgba(201, 168, 76, 0.12);
+    padding: 0.9rem 1.2rem;
+    border-radius: 2px;
+}
+
+/* Ícono de micrófono */
+.mic-icon {
+    width: 32px;
+    height: 32px;
+    fill: none;
+    stroke: #c9a84c;
+    stroke-width: 1.5;
+    flex-shrink: 0;
+}
+
+/* Texto de nota debajo del audio */
+.audio-note {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: #7a7060;
+    font-style: italic;
+}
+
+/* Contenedor del reproductor */
+.audio-player {
+    flex: 1;
+}
+
+/* Reproductor de audio nativo */
+audio {
+    width: 100%;
+    height: 32px;
+    accent-color: #c9a84c;
+}
+
+/* Mensaje cuando no hay audio */
+.no-audio-msg {
+    font-size: 0.7rem;
+    color: #7a7060;
+    letter-spacing: 0.1em;
+    font-style: italic;
+    flex: 1;
+}
+
+
+/* ===========================
+   ANIMACIÓN DE ONDAS (waveform)
+   Las barritas que se mueven
+   mientras carga el audio
+   =========================== */
+
+.waveform {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    height: 28px;
+    flex: 1;
+}
+
+/* Cada barrita de la onda */
+.waveform span {
+    display: block;
+    width: 3px;
+    background-color: #c9a84c;
+    border-radius: 2px;
+    opacity: 0.6;
+    animation: wave 1.2s ease-in-out infinite;
+}
+
+/* Alturas y tiempos distintos para cada barrita */
+.waveform span:nth-child(1)  { height: 8px;  animation-delay: 0s; }
+.waveform span:nth-child(2)  { height: 16px; animation-delay: 0.1s; }
+.waveform span:nth-child(3)  { height: 22px; animation-delay: 0.2s; }
+.waveform span:nth-child(4)  { height: 12px; animation-delay: 0.15s; }
+.waveform span:nth-child(5)  { height: 26px; animation-delay: 0.05s; }
+.waveform span:nth-child(6)  { height: 18px; animation-delay: 0.25s; }
+.waveform span:nth-child(7)  { height: 10px; animation-delay: 0.3s; }
+.waveform span:nth-child(8)  { height: 20px; animation-delay: 0.1s; }
+.waveform span:nth-child(9)  { height: 14px; animation-delay: 0.2s; }
+.waveform span:nth-child(10) { height: 8px;  animation-delay: 0.05s; }
+
+@keyframes wave {
+    0%, 100% { transform: scaleY(1);   opacity: 0.5; }
+    50%       { transform: scaleY(0.5); opacity: 1; }
+}
+
+
+/* ===========================
+   BLOQUE DE HISTORIA
+   (cuadrícula con datos)
+   =========================== */
+
+.historia-block {
+    margin-bottom: 3rem;
+
+    opacity: 0;
+    animation: fadeUp 0.7s 0.55s forwards;
+}
+
+/* Encabezado "#Historia" */
+.historia-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.historia-tag-hash {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: #c9a84c;
+    font-style: italic;
+}
+
+.historia-tag-text {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #c9a84c;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.35);
+    padding-bottom: 2px;
+}
+
+/* Cuadrícula de 2 columnas */
+.historia-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Cada celda */
+.historia-item {
+    padding: 1.1rem 1.3rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Las celdas del lado derecho no tienen borde derecho */
+.historia-item.derecha {
+    border-right: none;
+}
+
+/* La última fila no tiene borde inferior */
+.historia-item.ultima-fila {
+    border-bottom: none;
+}
+
+/* Etiqueta pequeña (Nombre, Edad, etc.) */
+.historia-key {
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #4a4540;
+    margin-bottom: 0.35rem;
+}
+
+/* Valor de cada dato */
+.historia-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #e8e0d0;
+    letter-spacing: 0.03em;
+}
+
+/* Celda de la frase (ocupa las 2 columnas) */
+.historia-frase {
+    grid-column: 1 / -1;
+    padding: 1.3rem;
+    border-bottom: none;
+    border-right: none;
+}
+
+.historia-frase .historia-val {
+    font-size: 1rem;
+    font-style: italic;
+    color: #b0a898;
+    line-height: 1.6;
+}
+
+
+/* ===========================
+   BLOQUE DE CANCIÓN FAVORITA
+   =========================== */
+
+.cancion-block {
+    margin-bottom: 3rem;
+
+    opacity: 0;
+    animation: fadeUp 0.7s 0.7s forwards;
+}
+
+/* Etiqueta "Canción favorita" con línea a la derecha */
+.cancion-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #7a7060;
+    margin-bottom: 0.8rem;
+
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cancion-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* Enlace con la canción */
+.cancion-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    border: 1px solid rgba(201, 168, 76, 0.35);
+    padding: 1rem 1.3rem;
+    background-color: rgba(201, 168, 76, 0.12);
+    border-radius: 2px;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.cancion-link:hover {
+    background-color: rgba(201, 168, 76, 0.2);
+    border-color: #c9a84c;
+}
+
+/* Círculo con el triángulo de play */
+.play-icon {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(201, 168, 76, 0.35);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: border-color 0.3s;
+}
+
+.cancion-link:hover .play-icon {
+    border-color: #c9a84c;
+}
+
+/* Triángulo de play hecho con bordes */
+.play-triangle {
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 10px solid #c9a84c;
+    margin-left: 2px;
+}
+
+/* Nombre de la canción */
+.cancion-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: #e8e0d0;
+    letter-spacing: 0.04em;
+}
+
+/* Texto pequeño "Escuchar ahora" */
+.cancion-sub {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: #7a7060;
+    margin-top: 0.2rem;
+    text-transform: uppercase;
+}
+
+/* Flecha al final del enlace */
+.ext-arrow {
+    margin-left: auto;
+    font-size: 1rem;
+    color: #9a7a38;
+    transition: transform 0.3s;
+}
+
+.cancion-link:hover .ext-arrow {
+    transform: translate(3px, -3px);
+}
+
+
+/* ===========================
+   PIE DE PÁGINA
+   =========================== */
+
+.page-footer {
+    margin-top: 1rem;
+    opacity: 0;
+    animation: fadeIn 0.6s 0.9s forwards;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-footer-text {
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #4a4540;
+}
+
+
+/* ===========================
+   ANIMACIONES GENERALES
+   =========================== */
+
+/* Sube y aparece */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Solo aparece */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+
+/* ===========================
+   RESPONSIVE — PANTALLAS PEQUEÑAS
+   Ajustes para celular
+   =========================== */
+
+@media (max-width: 520px) {
+    main {
+        padding: 5rem 1.2rem 4rem;
+    }
+
+    /* En celular la cuadrícula es de 1 sola columna */
+    .historia-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* En 1 columna todas las celdas tienen borde derecho */
+    .historia-item.derecha {
+        border-right: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .back-btn {
+        top: 1.2rem;
+        left: 1.2rem;
+    }
 }

@@ -120,3 +120,202 @@ footer {
     from { opacity: 0; transform: scale(0.5); }
     to   { opacity: 1; transform: scale(1); }
 }
+.btn-creditos {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 0.6rem 1.4rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: 0.85rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: inherit;
+            text-decoration: none;
+            border: 1px solid currentColor;
+            opacity: 0.5;
+            transition: opacity 0.3s ease, background 0.3s ease, color 0.3s ease;
+            z-index: 100;
+        }
+ 
+        .btn-creditos:hover {
+            opacity: 1;
+            background: currentColor;
+        }
+ 
+        .btn-creditos:hover span {
+            mix-blend-mode: difference;
+            filter: invert(1);
+        }
+                .creditos-pagina {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            gap: 2.5rem;
+        }
+
+        .creditos-titulo { text-align: center; }
+
+        .creditos-titulo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 400;
+            margin: 0 0 0.3rem;
+        }
+
+        .creditos-titulo .subtitulo {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+
+        .creditos-titulo .linea {
+            width: 60px;
+            height: 1px;
+            background: currentColor;
+            opacity: 0.3;
+            margin: 1.2rem auto 0;
+        }
+
+        .equipo-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            letter-spacing: 0.25em;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            opacity: 0.5;
+            text-align: center;
+        }
+
+        .tarjetas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .tarjeta {
+            border: 1px solid currentColor;
+            padding: 1.8rem 2rem;
+            min-width: 230px;
+            max-width: 270px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .tarjeta:hover { opacity: 1; }
+
+        .tarjeta .nombre {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .tarjeta .ig-personal {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: 0.82rem;
+            letter-spacing: 0.08em;
+            text-decoration: none;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+
+        .tarjeta .ig-personal:hover { opacity: 1; }
+
+        .tarjeta .separador {
+            width: 30px;
+            height: 1px;
+            background: currentColor;
+            opacity: 0.2;
+            margin: 0 auto;
+        }
+
+        .tarjeta .cancion-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.68rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            opacity: 0.45;
+        }
+
+        .cancion-card {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            padding: 0.85rem 1rem;
+            border: 1px solid currentColor;
+            text-decoration: none;
+            opacity: 0.75;
+            transition: opacity 0.3s, background 0.3s;
+            text-align: left;
+        }
+
+        .cancion-card:hover {
+            opacity: 1;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .play-icon {
+            font-size: 0.65rem;
+            padding-left: 2px;
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border: 1px solid currentColor;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cancion-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .cancion-nombre {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 0.88rem;
+            font-weight: 400;
+        }
+
+        .escuchar {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+
+        .volver {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: 0.8rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            text-decoration: none;
+            opacity: 0.4;
+            border: 1px solid currentColor;
+            padding: 0.5rem 1.2rem;
+            transition: opacity 0.3s;
+        }
+
+        .volver:hover { opacity: 0.9; }    
+        a {
+    color: inherit;
+}

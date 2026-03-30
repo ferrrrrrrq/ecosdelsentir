@@ -120,7 +120,6 @@
         // Si el audio carga bien: mostramos el reproductor
         audioEl.addEventListener('canplay', function() {
             waveform.style.display  = 'none';
-            audioEl.style.display   = 'block';
         });
 
         // Si hay error: mostramos el mensaje
@@ -129,11 +128,6 @@
             noAudioMsg.style.display = 'block';
         });
 
-        // Por si el audio ya estaba listo antes de que corriera el script
-        if (audioEl.readyState >= 3) {
-            waveform.style.display = 'none';
-            audioEl.style.display  = 'block';
-        }
     </script>
 
 </body>

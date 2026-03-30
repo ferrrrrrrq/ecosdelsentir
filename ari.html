@@ -114,18 +114,12 @@
 
         audioEl.addEventListener('canplay', function() {
             waveform.style.display = 'none';
-            audioEl.style.display  = 'block';
         });
 
         audioEl.addEventListener('error', function() {
             waveform.style.display   = 'none';
             noAudioMsg.style.display = 'block';
         });
-
-        if (audioEl.readyState >= 3) {
-            waveform.style.display = 'none';
-            audioEl.style.display  = 'block';
-        }
     </script>
 
 </body>

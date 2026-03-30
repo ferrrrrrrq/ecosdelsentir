@@ -88,7 +88,7 @@
 
         <div class="cancion-block">
             <p class="cancion-label">Canción favorita</p>
-            <a href="https://youtu.be/cNJIWewh_TY?si=83EDYFBxl4jSXIz4" class="cancion-link" target="_blank" rel="noopener">
+            <a href="https://youtu.be/saFhaOXd73k?si=WhVDHC7PWBgwscj7" class="cancion-link" target="_blank" rel="noopener">
                 <div class="play-icon">
                     <div class="play-triangle"></div>
                 </div>
@@ -114,16 +114,11 @@
 
         audioEl.addEventListener('canplay', function() {
             waveform.style.display = 'none';
-            audioEl.style.display  = 'block';
         });
         audioEl.addEventListener('error', function() {
             waveform.style.display   = 'none';
             noAudioMsg.style.display = 'block';
         });
-        if (audioEl.readyState >= 3) {
-            waveform.style.display = 'none';
-            audioEl.style.display  = 'block';
-        }
     </script>
 
 </body>

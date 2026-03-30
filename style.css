@@ -109,7 +109,7 @@ footer {
 .b7 { width: 120px; height: 120px; bottom: 1%; left: 2%;   animation-delay: 0.4s, 0.7s; --fx:  4px; --fy: -5px; }
 .b8 { width:  96px; height:  96px; bottom: 6%; right: 20%; animation-delay: 0.9s, 0.8s; --fx: -3px; --fy: -6px; }
 .b9 { width:  86px; height:  86px; bottom: 0%; left: 38%;  animation-delay: 0.6s, 0.9s; --fx:  2px; --fy: -7px; }
-
+.b10 { width: 100px; height: 100px; top: 0%;    left: 60%;  animation-delay: 0s,   0.1s; --fx:  3px; --fy: -6px; }
 @keyframes flotar {
     0%, 100% { transform: translate(0, 0); }
     50%       { transform: translate(var(--fx, 2px), var(--fy, -5px)); }
@@ -315,7 +315,8 @@ footer {
             transition: opacity 0.3s;
         }
 
-        .volver:hover { opacity: 0.9; }    
+        .volver:hover { opacity: 0.9; } 
+           
         a {
     color: inherit;
 }
